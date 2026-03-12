@@ -26,28 +26,11 @@ components:
           exposure: public
           protocol: https
 commands:
-  - id: install-deno
-    exec:
-      component: deno-dev
-      commandLine: curl -fsSL https://deno.land/install.sh | sh
-      workingDir: ${PROJECT_SOURCE}
-      group:
-        kind: build
-        isDefault: false
-  - id: install-codetogether
-    exec:
-      component: deno-dev
-      commandLine: code --install-extension genuitecllc.codetogether
-      workingDir: ${PROJECT_SOURCE}
-      group:
-        kind: build
-        isDefault: false
   - id: setup-workspace
-    composite:
-      commands:
-        - install-deno
-        - install-codetogether
-      parallel: false
+    exec:
+      component: deno-dev
+      commandLine: curl -fsSL https://deno.land/install.sh | sh && code --install-extension genuitecllc.codetogether
+      workingDir: ${PROJECT_SOURCE}
       group:
         kind: build
         isDefault: true
@@ -86,3 +69,4 @@ commands:
 events:
   postStart:
     - setup-workspace
+
