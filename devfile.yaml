@@ -29,7 +29,7 @@ commands:
   - id: setup-workspace
     exec:
       component: deno-dev
-      commandLine: curl -fsSL https://deno.land/install.sh | sh && code --install-extension genuitecllc.codetogether
+      commandLine: curl -fsSL https://deno.land/install.sh | sh
       workingDir: ${PROJECT_SOURCE}
       group:
         kind: build
